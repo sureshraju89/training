@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Container, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText, TextField } from '@mui/material';
 import { CalendarMonth, Person, Person2Outlined } from '@mui/icons-material';
 
-function App1(props) {
+function App3(props) {
   const { onNameChange, onAgeChange, onUpdate } = props;
   const [name, setName] = useState("");
   const [DOB, setDOB] = useState("");

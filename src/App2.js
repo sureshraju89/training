@@ -1,10 +1,21 @@
-import { Container } from '@mui/material';
+import { Avatar, Container, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import './App.css';
+import { Person } from '@mui/icons-material';
 
-function App2() {
+function App2(props) {
+  const { name, age } = props;
   return (
     <Container maxWidth="sm">
-      Hello
+      <List>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <Person />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary={name} secondary={age} />
+        </ListItem>
+      </List>
     </Container>
   );
 }
