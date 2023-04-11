@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Container, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText, TextField } from '@mui/material';
 import { CalendarMonth, Person, Person2Outlined } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { createUserRequest } from './store/user/user.action';
 
 function App1(props) {
+  const dispatch = useDispatch();
   const { onNameChange, onAgeChange, onUpdate } = props;
   const [name, setName] = useState("");
   const [DOB, setDOB] = useState("");
@@ -36,7 +39,11 @@ function App1(props) {
 
   function handleUpdate() {
     if (validate()) {
-      onUpdate(name, age)
+      // onUpdate(name, age);
+      dispatch(createUserRequest({
+        name: name,
+        age: age
+      }))
     }
     else {
       setValidated(true);
@@ -99,7 +106,7 @@ function App1(props) {
             onClick={() => {
               handleUpdate()
             }} variant='contained' fullWidth color="success">
-            Update
+            Create
           </Button>
         </CardActions>
       </Card>
