@@ -40,10 +40,11 @@ function App1(props) {
   function handleUpdate() {
     if (validate()) {
       // onUpdate(name, age);
-      dispatch(createUserRequest({
+      let act = createUserRequest({
         name: name,
         age: age
-      }))
+      });
+      dispatch(act)
     }
     else {
       setValidated(true);
