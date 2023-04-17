@@ -5,6 +5,7 @@ import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Container, 
 import { CalendarMonth, Person, Person2Outlined } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { createUserRequest } from './store/user/user.action';
+import ButtonAppBar from './common/header';
 
 function App1(props) {
   const dispatch = useDispatch();
@@ -54,64 +55,66 @@ function App1(props) {
   //const isValid = validate();
 
   return (
-    <Container maxWidth="sm">
-      <Card elevation={10}>
-        <CardHeader title="Person Information" subheader="Details" />
-        <Divider />
-        <CardContent>
-          <TextField
-            variant='outlined'
-            label="Name"
-            fullWidth
-            placeholder='Enter your Name'
-            type="text"
-            error={isValidated && name === ""}
-            helperText={isValidated && name === "" ? "Please enter the name" : ""}
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value)
-            }}
-            InputProps={{
-              startAdornment: <InputAdornment position='start'>
-                <Person />
-              </InputAdornment>,
-              endAdornment: <InputAdornment position='end'>
-                <Person2Outlined />
-              </InputAdornment>
-            }}
-          />
-          <br />
-          <br />
-          <TextField
-            variant='outlined'
-            label="Date of Birth"
-            fullWidth
-            placeholder='Enter your DOB'
-            type="date"
-            value={DOB}
-            onChange={(e) => {
-              setDOB(e.target.value)
-            }}
-            error={isValidated && DOB === ""}
-            helperText={isValidated && DOB === "" ? "Please enter the DOB" : ""}
-            InputProps={{
-              startAdornment: <InputAdornment position='start'>
-                <CalendarMonth />
-              </InputAdornment>
-            }}
-          />
-        </CardContent>
-        <CardActions>
-          <Button
-            //disabled={!isValid}
-            onClick={() => {
-              handleUpdate()
-            }} variant='contained' fullWidth color="success">
-            Create
-          </Button>
-        </CardActions>
-      </Card>
-    </Container>
+    <div>
+      <ButtonAppBar>
+        <Card elevation={10}>
+          <CardHeader title="Person Information" subheader="Details" />
+          <Divider />
+          <CardContent>
+            <TextField
+              variant='outlined'
+              label="Name"
+              fullWidth
+              placeholder='Enter your Name'
+              type="text"
+              error={isValidated && name === ""}
+              helperText={isValidated && name === "" ? "Please enter the name" : ""}
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value)
+              }}
+              InputProps={{
+                startAdornment: <InputAdornment position='start'>
+                  <Person />
+                </InputAdornment>,
+                endAdornment: <InputAdornment position='end'>
+                  <Person2Outlined />
+                </InputAdornment>
+              }}
+            />
+            <br />
+            <br />
+            <TextField
+              variant='outlined'
+              label="Date of Birth"
+              fullWidth
+              placeholder='Enter your DOB'
+              type="date"
+              value={DOB}
+              onChange={(e) => {
+                setDOB(e.target.value)
+              }}
+              error={isValidated && DOB === ""}
+              helperText={isValidated && DOB === "" ? "Please enter the DOB" : ""}
+              InputProps={{
+                startAdornment: <InputAdornment position='start'>
+                  <CalendarMonth />
+                </InputAdornment>
+              }}
+            />
+          </CardContent>
+          <CardActions>
+            <Button
+              //disabled={!isValid}
+              onClick={() => {
+                handleUpdate()
+              }} variant='contained' fullWidth color="success">
+              Create
+            </Button>
+          </CardActions>
+        </Card>
+      </ButtonAppBar>
+    </div>
   );
 }
 
