@@ -15,6 +15,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { AccountBox, Dashboard, ListAlt } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -27,6 +29,7 @@ interface Props {
 }
 
 export default function ResponsiveDrawer(props: Props) {
+    const navigate = useNavigate();
     const { window, children } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -39,29 +42,30 @@ export default function ResponsiveDrawer(props: Props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
+                <ListItem disablePadding onClick={() => navigate("/")}>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <Dashboard />
+                        </ListItemIcon>
+                        <ListItemText primary={"Dashboard"} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding onClick={() => navigate("/user/create")}>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <AccountBox />
+                        </ListItemIcon>
+                        <ListItemText primary={"Create User"} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding onClick={() => navigate("/user/list")}>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <ListAlt />
+                        </ListItemIcon>
+                        <ListItemText primary={"User List"} />
+                    </ListItemButton>
+                </ListItem>
             </List>
         </div>
     );
@@ -89,7 +93,7 @@ export default function ResponsiveDrawer(props: Props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                        User Management
                     </Typography>
                 </Toolbar>
             </AppBar>

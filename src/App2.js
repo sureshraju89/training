@@ -3,6 +3,7 @@ import './App.css';
 import { Person } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import { getUserAge, getUserName } from './store/user/user.selector';
+import ButtonAppBar from './common/header';
 
 function App2(props) {
   //const { name, age } = props;
@@ -15,18 +16,21 @@ function App2(props) {
   })
 
   return (
-    <Container maxWidth="sm">
-      <List>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <Person />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={name} secondary={age} />
-        </ListItem>
-      </List>
-    </Container>
+    <div>
+      <ButtonAppBar>
+        <List>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <Person />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={name} secondary={age} />
+          </ListItem>
+        </List>
+
+      </ButtonAppBar>
+    </div>
   );
 }
 
